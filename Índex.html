@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparativo de Produtos - Soja</title>
+
+```
+<!-- CSS Externo -->
+<link rel="stylesheet" href="styles.css">
+
+<!-- Bibliotecas PDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+```
+
+</head>
+<body>
+    <!-- Save Indicator -->
+    <div class="save-indicator" id="saveIndicator">
+        <div class="save-spinner"></div>
+        <span id="saveIndicatorText">Salvando...</span>
+    </div>
+
+```
+<div class="container">
+    <!-- Informações Gerais -->
+    <div class="card">
+        <div class="section-title">Dados do Produtor e Talhão</div>
+        <div class="form-row">
+            <label>Produtor</label>
+            <input type="text" id="produtor" placeholder="Nome do produtor">
+        </div>
+        <div class="form-row">
+            <label>Cidade</label>
+            <input type="text" id="cidade" placeholder="Cidade - UF">
+        </div>
+        <div class="form-row">
+            <label>Fazenda</label>
+            <div class="farm-name-container">
+                <input type="text" id="fazenda" placeholder="Nome da fazenda">
+                <input type="file" id="logoUpload" accept="image/*" style="display: none;">
+                <img id="logoPreview" class="logo-preview" alt="Logo">
+                <button class="logo-btn" id="logoBtn" onclick="document.getElementById('logoUpload').click()">📸</button>
+            </div>
+        </div>
+        <div class="form-row">
+            <label>Talhão</label>
+            <input type="text" id="talhao" placeholder="Nome do talhão">
+        </div>
+        <div class="form-row">
+            <label>Tamanho (ha)</label>
+            <input type="number" id="tamanhoHa" placeholder="0.00" step="0.01" max="9999999">
+        </div>
+    </div>
+
+    <!-- Comparações -->
+    <div id="comparisonsContainer"></div>
+
+    <div class="add-menu-container">
+        <button class="add-comparison-btn" onclick="toggleAddMenu()">
+            + Adicionar
+        </button>
+        <div class="add-menu" id="addMenu">
+            <button class="add-menu-item" onclick="addComparison(); toggleAddMenu();">Avaliação</button>
+            <button class="add-menu-item" onclick="addConclusao(); toggleAddMenu();">Conclusão</button>
+            <button class="add-menu-item" onclick="addROI(); toggleAddMenu();">ROI</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="consultant-input-row">
+            <input type="text" id="consultorNome" placeholder="Nome do consultor">
+            <input type="file" id="consultorUpload" accept="image/*" style="display: none;">
+            <img id="consultorPreview" class="upload-preview-small" alt="Consultor">
+            <button class="upload-btn-small" id="consultorBtn" onclick="document.getElementById('consultorUpload').click()">📸</button>
+        </div>
+        <div class="footer-branding">
+            <a href="https://afonsoraudinei.github.io/Relat-rio-/" target="_blank" class="new-report-link">Novo relatório</a>
+            <span class="branding-separator">•</span>
+            <a href="https://afonsoraudinei.github.io/" target="_blank" class="branding-link">SoloForte</a>
+        </div>
+    </div>
+</div>
+
+<button class="floating-btn" onclick="exportToPDF()" title="Exportar PDF">📄</button>
+
+<!-- JavaScript Externo -->
+<script src="script.js"></script>
+```
+
+</body>
+</html>
